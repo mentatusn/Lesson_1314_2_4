@@ -24,7 +24,4 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction().replace(R.id.fragment_container,MainFragment.newInstance()).commit()
         }
     }
-
-
-    class Containers <T: ViewGroup>(val view:T)
 }

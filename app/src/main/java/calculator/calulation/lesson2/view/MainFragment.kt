@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import calculator.calulation.lesson2.R
 import calculator.calulation.lesson2.databinding.ActivityMainBinding
+import calculator.calulation.lesson2.databinding.FragmentMainBinding
 import calculator.calulation.lesson2.databinding.MainFragmentBinding
 import calculator.calulation.lesson2.viewmodel.AppState
 import calculator.calulation.lesson2.viewmodel.MainViewModel
@@ -18,10 +19,12 @@ import com.google.android.material.snackbar.Snackbar
 
 class MainFragment : Fragment() {
 
+    val mainFragmentAdapter:MainFragmentAdapter =MainFragmentAdapter()
+
     lateinit var viewModel: MainViewModel
-    var _binding: MainFragmentBinding? = null
-    private val binding:MainFragmentBinding
-        get() :MainFragmentBinding{
+    var _binding: FragmentMainBinding? = null
+    private val binding:FragmentMainBinding
+        get() :FragmentMainBinding{
             return _binding!!
         }
 
@@ -34,39 +37,60 @@ class MainFragment : Fragment() {
         fun newInstance()= MainFragment()
     }
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
-        _binding = MainFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+    var isRussian:Boolean = true
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        binding.mainFragmentFAB.setOnClickListener{
+            initListener()
+        }
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         //val observer = Observer<Any>{ Toast.makeText(context,"Работает ",Toast.LENGTH_LONG).show()}
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
-        viewModel.getWaether()
+        viewModel.getWeatherFromLocalSourceRussian()
+        binding.mainFragmentFAB.setImageResource(R.drawable.ic_russia)
+        isRussian = true
+    }
+
+    private fun initListener() {
+        if (isRussian) {
+            viewModel.getWeatherFromLocalSourceWorld()
+            binding.mainFragmentFAB.setImageResource(R.drawable.ic_earth)
+        } else {
+            viewModel.getWeatherFromLocalSourceRussian()
+            binding.mainFragmentFAB.setImageResource(R.drawable.ic_russia)
+        }
+        isRussian = !isRussian
     }
 
     private fun renderData(appState: AppState) {
         when(appState){
             is AppState.Error -> TODO() //show errors
             is AppState.Success -> {
-                binding.loadingLayout.visibility = View.GONE
-                Snackbar.make(binding.mainView,"Success",Snackbar.LENGTH_LONG).show()
-                setData(appState)
+                binding.mainFragmentLoadingLayout.visibility = View.GONE
+                binding.mainFragmentRecyclerView.adapter = mainFragmentAdapter
+                mainFragmentAdapter.setWeather(appState.dataWeather)
+
+                /*Snackbar.make(binding.mainView,"Success",Snackbar.LENGTH_LONG).show()
+                setData(appState)*/
             }
             AppState.Loading -> {
-                binding.loadingLayout.visibility = View.VISIBLE
+                binding.mainFragmentLoadingLayout.visibility = View.VISIBLE
             }
         }
     }
 
-    private fun setData(appState: AppState.Success) {
+    /*private fun setData(appState: AppState.Success) {
         binding.cityCoordinates.text =
             "${appState.dataWeather.city.lat} ${appState.dataWeather.city.long}"
         binding.cityName.text = appState.dataWeather.city.city
         binding.feelsLikeValue.text = appState.dataWeather.temerature.toString()
         binding.temperatureValue.text = appState.dataWeather.feelsLike.toString()
-    }
+    }*/
 
 
 }
