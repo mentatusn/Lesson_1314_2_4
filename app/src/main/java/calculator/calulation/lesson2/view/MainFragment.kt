@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import calculator.calulation.lesson2.R
 import calculator.calulation.lesson2.databinding.ActivityMainBinding
 import calculator.calulation.lesson2.databinding.FragmentMainBinding
-import calculator.calulation.lesson2.databinding.MainFragmentBinding
 import calculator.calulation.lesson2.viewmodel.AppState
 import calculator.calulation.lesson2.viewmodel.MainViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -28,7 +27,7 @@ class MainFragment : Fragment() {
                 val bundle = Bundle()
                 bundle.putParcelable(DetailsFragment.KEY_WEATHER,weather)
                 manager.beginTransaction()
-                    .replace(R.id.container, DetailsFragment.newInstance(bundle))
+                    .add(R.id.container, DetailsFragment.newInstance(bundle))
                     .addToBackStack("")
                     .commitAllowingStateLoss()
             }

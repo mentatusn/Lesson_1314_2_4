@@ -9,9 +9,7 @@ import android.widget.RelativeLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import calculator.calulation.lesson2.R
 import calculator.calulation.lesson2.databinding.ActivityMainBinding
-import calculator.calulation.lesson2.databinding.MainFragmentBinding
-import calculator.calulation.lesson2.lesson3.Collections
-import calculator.calulation.lesson2.lesson3.NullSafety
+
 
 class MainActivity : AppCompatActivity() {
 

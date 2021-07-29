@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import calculator.calulation.lesson2.databinding.DetailsFragmentBinding
+import calculator.calulation.lesson2.databinding.FragmentDetailsBinding
 import calculator.calulation.lesson2.databinding.FragmentMainBinding
 
 class DetailsFragment:Fragment() {
@@ -19,9 +19,9 @@ class DetailsFragment:Fragment() {
         }
     }
 
-    var _binding: DetailsFragmentBinding? = null
-    private val binding:  DetailsFragmentBinding
-        get() : DetailsFragmentBinding {
+    var _binding: FragmentDetailsBinding? = null
+    private val binding:  FragmentDetailsBinding
+        get() : FragmentDetailsBinding {
             return _binding!!
         }
 
@@ -30,7 +30,7 @@ class DetailsFragment:Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding =  DetailsFragmentBinding.inflate(inflater, container, false)
+        _binding =  FragmentDetailsBinding.inflate(inflater, container, false)
         return binding.root
 
     }
