@@ -1,10 +1,17 @@
 package calculator.calulation.lesson2.view
 
-class Weather(val city: City = getDefaultCity(), val temerature: Int = 22, val feelsLike: Int = 24)
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+data class Weather(val city: City = getDefaultCity(), val temerature: Int = 22, val feelsLike: Int = 24):Parcelable
+
+@Parcelize
+data class City(val city: String, val lat: Double, val long: Double):Parcelable
 
 fun getDefaultCity() = City("Москва", 55.75, 37.61)
 
-data class City(val city: String, val lat: Double, val long: Double)
+
 
 fun getWorldCities(): List<Weather> {
     return listOf(

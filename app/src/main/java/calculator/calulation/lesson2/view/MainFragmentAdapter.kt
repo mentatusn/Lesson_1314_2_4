@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import calculator.calulation.lesson2.R
 
-class MainFragmentAdapter : RecyclerView.Adapter<MainFragmentAdapter.MainViewHolder>() {
+class MainFragmentAdapter constructor(var onItemViewClickListener: OnItemViewClickListener?) : RecyclerView.Adapter<MainFragmentAdapter.MainViewHolder>() {
 
     // private var weatherData: List<Weather> = listOf()
     private lateinit var weatherData: List<Weather>
@@ -17,6 +17,11 @@ class MainFragmentAdapter : RecyclerView.Adapter<MainFragmentAdapter.MainViewHol
         weatherData = list
         notifyDataSetChanged()
     }
+
+    fun removeListener(){
+        onItemViewClickListener = null
+    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val view = (LayoutInflater.from(parent.context).inflate(R.layout.fragment_main_recycler_item,parent,false))
@@ -33,11 +38,12 @@ class MainFragmentAdapter : RecyclerView.Adapter<MainFragmentAdapter.MainViewHol
         return weatherData.size;
     }
 
-    class MainViewHolder(view: View): RecyclerView.ViewHolder(view){
+    inner class MainViewHolder(view: View): RecyclerView.ViewHolder(view){
         fun init(weather: Weather){
             itemView.findViewById<TextView>(R.id.mainFragmentRecyclerItemTextView).text =
                 weather.city.city
-            Toast.makeText(itemView.context,weather.city.city,Toast.LENGTH_SHORT).show()
+            itemView.setOnClickListener{onItemViewClickListener?.onItemViewClick(weather)}
+            //Toast.makeText(itemView.context,weather.city.city,Toast.LENGTH_SHORT).show()
         }
     }
 

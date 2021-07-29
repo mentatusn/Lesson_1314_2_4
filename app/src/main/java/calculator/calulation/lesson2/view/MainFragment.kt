@@ -19,33 +19,55 @@ import com.google.android.material.snackbar.Snackbar
 
 class MainFragment : Fragment() {
 
-    val mainFragmentAdapter:MainFragmentAdapter =MainFragmentAdapter()
+    //val mainFragmentAdapter: MainFragmentAdapter = MainFragmentAdapter()
+    val mainFragmentAdapter: MainFragmentAdapter = MainFragmentAdapter(object :OnItemViewClickListener{
+        override fun onItemViewClick(weather: Weather) {
+            val manager = activity?.supportFragmentManager
+            if(manager!=null){
+
+                val bundle = Bundle()
+                bundle.putParcelable(DetailsFragment.KEY_WEATHER,weather)
+                manager.beginTransaction()
+                    .replace(R.id.container, DetailsFragment.newInstance(bundle))
+                    .addToBackStack("")
+                    .commitAllowingStateLoss()
+            }
+
+
+        }
+    })
 
     lateinit var viewModel: MainViewModel
     var _binding: FragmentMainBinding? = null
-    private val binding:FragmentMainBinding
-        get() :FragmentMainBinding{
+    private val binding: FragmentMainBinding
+        get() :FragmentMainBinding {
             return _binding!!
         }
 
     override fun onDestroy() {
         super.onDestroy()
-        _binding
+        _binding=null
+        mainFragmentAdapter.removeListener()
     }
 
     companion object {
-        fun newInstance()= MainFragment()
+        fun newInstance() = MainFragment()
     }
-    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    var isRussian:Boolean = true
+    var isRussian: Boolean = true
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        binding.mainFragmentFAB.setOnClickListener{
+        binding.mainFragmentFAB.setOnClickListener {
             initListener()
         }
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
@@ -68,7 +90,7 @@ class MainFragment : Fragment() {
     }
 
     private fun renderData(appState: AppState) {
-        when(appState){
+        when (appState) {
             is AppState.Error -> TODO() //show errors
             is AppState.Success -> {
                 binding.mainFragmentLoadingLayout.visibility = View.GONE
@@ -83,14 +105,6 @@ class MainFragment : Fragment() {
             }
         }
     }
-
-    /*private fun setData(appState: AppState.Success) {
-        binding.cityCoordinates.text =
-            "${appState.dataWeather.city.lat} ${appState.dataWeather.city.long}"
-        binding.cityName.text = appState.dataWeather.city.city
-        binding.feelsLikeValue.text = appState.dataWeather.temerature.toString()
-        binding.temperatureValue.text = appState.dataWeather.feelsLike.toString()
-    }*/
 
 
 }
