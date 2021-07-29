@@ -5,6 +5,7 @@ import android.os.Bundle
 import calculator.calulation.lesson2.R
 import calculator.calulation.lesson2.databinding.ActivityMainBinding
 import calculator.calulation.lesson2.databinding.MainFragmentBinding
+import calculator.calulation.lesson2.lesson3.NullSafety
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,5 +17,6 @@ class MainActivity : AppCompatActivity() {
         if(savedInstanceState==null){
             supportFragmentManager.beginTransaction().replace(R.id.fragment_container,MainFragment.newInstance()).commit()
         }
+        NullSafety.foo()
     }
 }

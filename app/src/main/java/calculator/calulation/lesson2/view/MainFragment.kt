@@ -19,17 +19,22 @@ import com.google.android.material.snackbar.Snackbar
 class MainFragment : Fragment() {
 
     lateinit var viewModel: MainViewModel
-    //var _binding: MainFragmentBinding? = null
-    lateinit var binding:MainFragmentBinding
-    /*    get() :MainFragmentBinding{
+    var _binding: MainFragmentBinding? = null
+    private val binding:MainFragmentBinding
+        get() :MainFragmentBinding{
             return _binding!!
-        }*/
+        }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding
+    }
 
     companion object {
         fun newInstance()= MainFragment()
     }
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
-        binding = MainFragmentBinding.inflate(inflater, container, false)
+        _binding = MainFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
