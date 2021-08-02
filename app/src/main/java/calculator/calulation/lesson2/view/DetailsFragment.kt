@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import calculator.calulation.lesson2.databinding.FragmentDetailsBinding
-import calculator.calulation.lesson2.databinding.FragmentMainBinding
 
 class DetailsFragment : Fragment() {
 
@@ -43,26 +42,31 @@ class DetailsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val weather = arguments?.getParcelable(KEY_WEATHER) as? Weather
-        if (weather != null)
-            setData(weather)
-    }
-
-    private fun setData(weather: Weather) {
-        /*with(binding){
-            cityCoordinates.text =
-                "${weather.city.lat} ${weather.city.long}"
-            cityName.text = weather.city.city
-            feelsLikeValue.text = weather.temerature.toString()
-            temperatureValue.text = weather.feelsLike.toString()
-        }  */
-        binding.apply {
-            cityCoordinates.text =
-                "${weather.city.lat} ${weather.city.long}"
-            cityName.text = weather.city.city
-            feelsLikeValue.text = weather.temerature.toString()
-            temperatureValue.text = weather.feelsLike.toString()
+        //arguments?.getParcelable<Weather>(KEY_WEATHER)?.apply { setData(weather) }
+        arguments?.getParcelable<Weather>(KEY_WEATHER)?.apply {
+            with(binding) {
+                cityCoordinates.text = "${city.lat} ${city.long}"
+                cityName.text = city.name
+                feelsLikeValue.text = temperature.toString()
+                temperatureValue.text = feelsLike.toString()
+            }
         }
-
     }
+
+    /*private fun setData(weather: Weather) {
+        with(binding){
+            with(weather){
+
+            }
+
+        }
+        /*binding.apply {
+            cityCoordinates.text =
+                "${weather.city.lat} ${weather.city.long}"
+            cityName.text = weather.city.city
+            feelsLikeValue.text = weather.temerature.toString()
+            temperatureValue.text = weather.feelsLike.toString()
+        }*/
+
+    }*/
 }

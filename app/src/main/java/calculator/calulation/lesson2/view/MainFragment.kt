@@ -20,22 +20,33 @@ import com.google.android.material.snackbar.Snackbar
 class MainFragment : Fragment() {
 
     //val mainFragmentAdapter: MainFragmentAdapter = MainFragmentAdapter()
-    val mainFragmentAdapter: MainFragmentAdapter = MainFragmentAdapter(object :OnItemViewClickListener{
-        override fun onItemViewClick(weather: Weather) {
-            val manager = activity?.supportFragmentManager
-            if(manager!=null){
+    val mainFragmentAdapter: MainFragmentAdapter =
+        MainFragmentAdapter(object : OnItemViewClickListener {
+//        override fun onItemViewClick(weather: Weather) {
+//            val manager = activity?.supportFragmentManager
+//            if(manager!=null){
+//
+//                val bundle = Bundle()
+//                bundle.putParcelable(DetailsFragment.KEY_WEATHER,weather)
+//                manager.beginTransaction()
+//                    .add(R.id.container, DetailsFragment.newInstance(bundle))
+//                    .addToBackStack("")
+//                    .commitAllowingStateLoss()
+//            }
+//        }
 
-                val bundle = Bundle()
-                bundle.putParcelable(DetailsFragment.KEY_WEATHER,weather)
-                manager.beginTransaction()
-                    .add(R.id.container, DetailsFragment.newInstance(bundle))
-                    .addToBackStack("")
-                    .commitAllowingStateLoss()
+            override fun onItemViewClick(weather: Weather) {
+                activity?.supportFragmentManager?.apply {
+                    beginTransaction()
+                        .add(R.id.container, DetailsFragment.newInstance(Bundle().apply {
+                            putParcelable(DetailsFragment.KEY_WEATHER, weather)
+                        }))
+                        .addToBackStack("")
+                        .commitAllowingStateLoss()
+                }
             }
 
-
-        }
-    })
+        })
 
     //lateinit var viewModel: MainViewModel
     val viewModel: MainViewModel by lazy {
@@ -49,7 +60,7 @@ class MainFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        _binding=null
+        _binding = null
         mainFragmentAdapter.removeListener()
     }
 
@@ -92,6 +103,10 @@ class MainFragment : Fragment() {
         isRussian = !isRussian
     }
 
+    fun View.hW(resourceID:Int,duration:Int){
+        Snackbar.make(this,requireActivity().resources.getString(resourceID),duration).show()
+    }
+
     private fun renderData(appState: AppState) {
         when (appState) {
             is AppState.Error -> TODO() //show errors
@@ -100,8 +115,9 @@ class MainFragment : Fragment() {
                 binding.mainFragmentRecyclerView.adapter = mainFragmentAdapter
                 mainFragmentAdapter.setWeather(appState.dataWeather)
 
-                /*Snackbar.make(binding.mainView,"Success",Snackbar.LENGTH_LONG).show()
-                setData(appState)*/
+               // Snackbar.make(binding.root,"Success",Snackbar.LENGTH_LONG).show()
+                binding.root.hW(R.string.app_name,Snackbar.LENGTH_LONG)
+                /*setData(appState)*/
             }
             AppState.Loading -> {
                 binding.mainFragmentLoadingLayout.visibility = View.VISIBLE

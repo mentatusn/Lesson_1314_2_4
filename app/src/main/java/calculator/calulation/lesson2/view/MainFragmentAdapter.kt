@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import calculator.calulation.lesson2.R
 
@@ -40,9 +39,11 @@ class MainFragmentAdapter constructor(var onItemViewClickListener: OnItemViewCli
 
     inner class MainViewHolder(view: View): RecyclerView.ViewHolder(view){
         fun init(weather: Weather){
-            itemView.findViewById<TextView>(R.id.mainFragmentRecyclerItemTextView).text =
-                weather.city.city
-            itemView.setOnClickListener{onItemViewClickListener?.onItemViewClick(weather)}
+            with(itemView){
+                findViewById<TextView>(R.id.mainFragmentRecyclerItemTextView).text =
+                    weather.city.name
+                setOnClickListener{onItemViewClickListener?.onItemViewClick(weather)}
+            }
             //Toast.makeText(itemView.context,weather.city.city,Toast.LENGTH_SHORT).show()
         }
     }
