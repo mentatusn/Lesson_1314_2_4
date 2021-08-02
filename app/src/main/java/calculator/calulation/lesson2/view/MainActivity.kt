@@ -9,6 +9,8 @@ import android.widget.RelativeLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import calculator.calulation.lesson2.R
 import calculator.calulation.lesson2.databinding.ActivityMainBinding
+import calculator.calulation.lesson2.lesson4.Lambda
+import calculator.calulation.lesson2.lesson4.LambdaJava
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,5 +24,6 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.container, MainFragment.newInstance()).commit()
         }
+        Lambda.main()
     }
 }
