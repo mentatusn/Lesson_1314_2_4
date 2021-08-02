@@ -25,6 +25,6 @@ class MainActivity : AppCompatActivity() {
                 .replace(R.id.container, MainFragment.newInstance()).commit()
         }
         //ExtFunctions.main()
-        mainD()
+        //mainD()
     }
 }
