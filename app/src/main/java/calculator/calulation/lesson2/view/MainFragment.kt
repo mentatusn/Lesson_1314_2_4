@@ -1,6 +1,7 @@
 package calculator.calulation.lesson2.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,7 +37,10 @@ class MainFragment : Fragment() {
         }
     })
 
-    lateinit var viewModel: MainViewModel
+    //lateinit var viewModel: MainViewModel
+    val viewModel: MainViewModel by lazy {
+        ViewModelProvider(this).get(MainViewModel::class.java)
+    }
     var _binding: FragmentMainBinding? = null
     private val binding: FragmentMainBinding
         get() :FragmentMainBinding {
@@ -69,7 +73,7 @@ class MainFragment : Fragment() {
         binding.mainFragmentFAB.setOnClickListener {
             initListener()
         }
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        //viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         //val observer = Observer<Any>{ Toast.makeText(context,"Работает ",Toast.LENGTH_LONG).show()}
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
         viewModel.getWeatherFromLocalSourceRussian()
