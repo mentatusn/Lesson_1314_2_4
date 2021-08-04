@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import calculator.calulation.lesson2.databinding.FragmentDetailsBinding
+import calculator.calulation.lesson2.model.Weather
 
 class DetailsFragment : Fragment() {
 
     companion object {
-        val KEY_WEATHER: String = "key"
+        const val KEY_WEATHER: String = "key"
         fun newInstance(bundle: Bundle): DetailsFragment {
             val fragment = DetailsFragment()
             fragment.arguments = bundle
@@ -18,7 +19,7 @@ class DetailsFragment : Fragment() {
         }
     }
 
-    var _binding: FragmentDetailsBinding? = null
+    private var _binding: FragmentDetailsBinding? = null
     private val binding: FragmentDetailsBinding
         get() : FragmentDetailsBinding {
             return _binding!!
@@ -28,7 +29,7 @@ class DetailsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentDetailsBinding.inflate(inflater, container, false)
         return binding.root
 
