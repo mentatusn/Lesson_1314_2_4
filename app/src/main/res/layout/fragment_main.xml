@@ -24,7 +24,7 @@
         app:srcCompat="@drawable/ic_russia"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:maxImageSize="56dp" />
+        app:maxImageSize="@dimen/max_size_fab" />
 
     <FrameLayout
         android:id="@+id/mainFragmentLoadingLayout"

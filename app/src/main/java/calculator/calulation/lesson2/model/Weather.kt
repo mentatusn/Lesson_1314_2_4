@@ -1,4 +1,4 @@
-package calculator.calulation.lesson2.view
+package calculator.calulation.lesson2.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

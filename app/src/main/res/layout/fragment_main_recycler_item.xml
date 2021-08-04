@@ -10,16 +10,16 @@
         android:id="@+id/mainFragmentRecyclerItemTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:textSize="20sp"
+        android:padding="@dimen/padding_for_city_head"
+        android:textSize="@dimen/text_size_for_city_head"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Москва" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginEnd="20dp"
+        android:layout_height="@dimen/height_line"
+        android:layout_marginEnd="@dimen/margin_line"
         android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

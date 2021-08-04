@@ -1,6 +1,6 @@
 package calculator.calulation.lesson2.viewmodel
 
-import calculator.calulation.lesson2.view.Weather
+import calculator.calulation.lesson2.model.Weather
 
 sealed class AppState{
     //data class Success(val dataWeather: Any):AppState()
