@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import calculator.calulation.lesson2.R
 import calculator.calulation.lesson2.databinding.FragmentMainBinding
 import calculator.calulation.lesson2.model.Weather
+import calculator.calulation.lesson2.view.details.DetailsFragment
 import calculator.calulation.lesson2.viewmodel.AppState
 import calculator.calulation.lesson2.viewmodel.MainViewModel
 import com.google.android.material.snackbar.Snackbar
