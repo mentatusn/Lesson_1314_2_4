@@ -1,10 +1,6 @@
 package calculator.calulation.lesson2.lesson3
 
 import android.util.Log
-import android.view.ViewGroup
-import android.widget.Button
-import androidx.appcompat.app.AppCompatActivity
-import java.io.File
 
 object Collections:Interface {
 

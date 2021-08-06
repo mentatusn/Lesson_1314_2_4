@@ -6,16 +6,18 @@ import calculator.calulation.lesson2.model.Repository
 import calculator.calulation.lesson2.model.RepositoryImpl
 import java.lang.Thread.sleep
 
-class MainViewModel(private val liveDataObserver :MutableLiveData<AppState> = MutableLiveData(),
-                    private val repository: Repository = RepositoryImpl()) :ViewModel() {
-    fun getLiveData()=liveDataObserver
+class MainViewModel(
+    private val liveDataObserver: MutableLiveData<AppState> = MutableLiveData(),
+    private val repository: Repository = RepositoryImpl()
+) : ViewModel() {
+    fun getLiveData() = liveDataObserver
 
-    fun getWeatherFromLocalSourceRussian()=getDataFromLocalSource(true)
-    fun getWeatherFromLocalSourceWorld()=getDataFromLocalSource(false)
+    fun getWeatherFromLocalSourceRussian() = getDataFromLocalSource(true)
+    fun getWeatherFromLocalSourceWorld() = getDataFromLocalSource(false)
 
-    fun getWeatherFromRemoteSource()=getDataFromLocalSource(true)
+    fun getWeatherFromRemoteSource() = getDataFromLocalSource(true)
 
-    private fun getDataFromLocalSource(isRussian: Boolean){
+    private fun getDataFromLocalSource(isRussian: Boolean) {
         Thread {
             with(liveDataObserver) {
                 with(repository) {

@@ -1,8 +1,6 @@
 package calculator.calulation.lesson2.lesson4
 
 import android.util.Log
-import calculator.calulation.lesson2.view.MainActivity
-import kotlin.jvm.functions.FunctionN
 
 object Lambda {
     private val str = "outer"
