@@ -22,6 +22,19 @@
         <activity android:name=".view.MainActivityWebView">
 
         </activity>
+        <service android:name=".lesson6.MainService"/>
+        <service android:name=".view.details.DetailsService"/>
+        <receiver
+            android:name=".lesson6.MyBroadcastReceiver">
+            <intent-filter>
+                <action android:name="my.action"/>
+
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.LOCALE_CHANGED"/>
+
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

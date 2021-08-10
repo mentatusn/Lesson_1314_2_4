@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:id="@+id/mainContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_15_dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="calculate"
+                android:textSize="@dimen/feels_like_text_size" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="2"
+                android:gravity="center_horizontal"
+                android:inputType="number"
+                android:text="2"
+                android:textSize="@dimen/feels_like_text_size" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                tools:text="0"
+                android:textSize="@dimen/feels_like_text_size" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/buttonFromThread"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="FromThread"
+            android:textSize="@dimen/feels_like_text_size" />
+
+        <Button
+            android:id="@+id/buttonEndlessThread"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Endless"
+            android:textSize="@dimen/feels_like_text_size" />
+        <Button
+            android:id="@+id/serviceButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="service"
+            android:textSize="@dimen/feels_like_text_size" />
+        <Button
+            android:id="@+id/serviceReceiverButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="service+receiver"
+            android:textSize="@dimen/feels_like_text_size" />
+
+        <Button
+            android:id="@+id/receiver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="receiver"
+            android:textSize="@dimen/feels_like_text_size" />
+
+
+    </LinearLayout>
+</ScrollView>
