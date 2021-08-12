@@ -1,6 +1,5 @@
 package calculator.calulation.lesson2.view
 
-import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.view.Menu
@@ -10,6 +9,7 @@ import calculator.calulation.lesson2.R
 import calculator.calulation.lesson2.databinding.ActivityMainBinding
 import calculator.calulation.lesson2.lesson6.MyBroadcastReceiver
 import calculator.calulation.lesson2.lesson6.ThreadsFragment
+import calculator.calulation.lesson2.view.main.MainFragment
 
 
 class MainActivity : AppCompatActivity() {

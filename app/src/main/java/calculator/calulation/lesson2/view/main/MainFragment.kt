@@ -1,4 +1,4 @@
-package calculator.calulation.lesson2.view
+package calculator.calulation.lesson2.view.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -119,7 +119,7 @@ class MainFragment : Fragment() {
                 with(binding) {
                     mainFragmentLoadingLayout.visibility = View.GONE
                     mainFragmentRecyclerView.adapter = mainFragmentAdapter
-                    mainFragmentAdapter.setWeather(appState.dataWeather)
+                    mainFragmentAdapter.setWeather(appState.weatherData)
                     root.hW(R.string.app_name, Snackbar.LENGTH_LONG)
                     /* Классический вариант использования Snackbar
                     Snackbar.make(binding.root,"Success",Snackbar.LENGTH_LONG).show()*/

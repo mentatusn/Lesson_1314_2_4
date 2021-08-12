@@ -1,4 +1,4 @@
-package calculator.calulation.lesson2.view
+package calculator.calulation.lesson2.view.main
 
 import android.view.LayoutInflater
 import android.view.View

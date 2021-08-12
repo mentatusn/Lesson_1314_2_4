@@ -8,20 +8,14 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
 import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import calculator.calulation.lesson2.databinding.FragmentMainBinding
 import calculator.calulation.lesson2.databinding.FragmentThreadsBinding
-import calculator.calulation.lesson2.view.MainFragment
-import kotlinx.android.synthetic.main.fragment_threads.*
 import java.lang.Thread.sleep
-import java.util.*
-import java.util.concurrent.TimeUnit
 
 const val TEST_BROADCAST_INTENT_FILTER = "TEST BROADCAST INTENT FILTER"
 const val THREADS_FRAGMENT_BROADCAST_EXTRA = "THREADS_FRAGMENT_EXTRA"
