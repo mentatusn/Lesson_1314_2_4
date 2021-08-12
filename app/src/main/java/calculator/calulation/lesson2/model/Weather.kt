@@ -8,7 +8,8 @@ data class Weather(
     val city: City = getDefaultCity(),
     val temperature: Int = 22,
     val feelsLike: Int = 24,
-    val condition:String = "rain"
+    val condition:String = "rain",
+    val icon:String = "skc_n"
 ) : Parcelable
 
 @Parcelize

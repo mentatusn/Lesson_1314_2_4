@@ -1,5 +1,6 @@
 package calculator.calulation.lesson2.view.details
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import calculator.calulation.lesson2.viewmodel.DetailsViewModel
 import calculator.calulation.utils.CircleTransformation
 import coil.api.load
 import com.bumptech.glide.Glide
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
 import com.squareup.picasso.Picasso
 
 class DetailsFragment : Fragment() {
@@ -101,6 +103,11 @@ class DetailsFragment : Fragment() {
                 .into(binding.headerIcon)*/
 
            /* binding.headerIcon.load("https://freepngimg.com/thumb/city/36275-3-city-hd.png")*/
+
+            GlideToVectorYou.justLoadImage(requireActivity(),
+                Uri.parse("https://yastatic.net/weather/i/icons/blueye/color/svg/${weather.icon}.svg"),
+                binding.weatherIcon)
+
 
         }
     }

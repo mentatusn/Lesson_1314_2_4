@@ -7,5 +7,5 @@ import calculator.calulation.lesson2.model.getDefaultCity
 
 fun convertWeatherDtoToModel (weatherDTO: WeatherDTO):List<Weather>{ //FIXME
     val factDTO: FactDTO =weatherDTO.fact
-    return listOf(Weather(getDefaultCity(),factDTO.temp,factDTO.feels_like,factDTO.condition)) //FIXME
+    return listOf(Weather(getDefaultCity(),factDTO.temp,factDTO.feels_like,factDTO.condition,factDTO.icon)) //FIXME
 }
