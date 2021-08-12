@@ -11,9 +11,13 @@ import calculator.calulation.lesson2.databinding.FragmentDetailsBinding
 import calculator.calulation.lesson2.model.Weather
 import calculator.calulation.lesson2.viewmodel.AppState
 import calculator.calulation.lesson2.viewmodel.DetailsViewModel
+import calculator.calulation.utils.CircleTransformation
+import coil.api.load
+import com.bumptech.glide.Glide
+import com.squareup.picasso.Picasso
 
 class DetailsFragment : Fragment() {
-    private lateinit var weatherBundle:Weather
+    private lateinit var weatherBundle: Weather
     private var _binding: FragmentDetailsBinding? = null
     private val binding: FragmentDetailsBinding
         get() : FragmentDetailsBinding {
@@ -21,7 +25,7 @@ class DetailsFragment : Fragment() {
         }
 
     private val viewModel: DetailsViewModel by lazy {
-        ViewModelProvider(this).get( DetailsViewModel::class.java)
+        ViewModelProvider(this).get(DetailsViewModel::class.java)
     }
 
     companion object {
@@ -41,17 +45,18 @@ class DetailsFragment : Fragment() {
         _binding = FragmentDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
         arguments?.getParcelable<Weather>(KEY_WEATHER)?.apply {
             weatherBundle = this
         }
-        viewModel.getWeatherFromRemoteSource(weatherBundle.city.lat,weatherBundle.city.lon)
+        viewModel.getWeatherFromRemoteSource(weatherBundle.city.lat, weatherBundle.city.lon)
     }
 
-    private fun renderData(appState: AppState){
-        when(appState){
+    private fun renderData(appState: AppState) {
+        when (appState) {
             is AppState.Error -> {
                 binding.mainView.visibility = View.VISIBLE
                 binding.loadingLayout.visibility = View.GONE
@@ -68,6 +73,7 @@ class DetailsFragment : Fragment() {
             }
         }
     }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
@@ -83,11 +89,21 @@ class DetailsFragment : Fragment() {
             binding.feelsLikeValue.text = weather.temperature.toString()
             binding.temperatureValue.text = weather.feelsLike.toString()
             binding.condition.text = weather.condition
+
+            Picasso
+                .get()
+                .load("https://freepngimg.com/thumb/city/36275-3-city-hd.png")
+                //.transform(CircleTransformation())
+                //.rotate(90f)
+                .into(binding.headerIcon)
+           /* Glide.with(binding.headerIcon)
+                .load("https://freepngimg.com/thumb/city/36275-3-city-hd.png")
+                .into(binding.headerIcon)*/
+
+           /* binding.headerIcon.load("https://freepngimg.com/thumb/city/36275-3-city-hd.png")*/
+
         }
     }
-
-
-
 
 
 }
