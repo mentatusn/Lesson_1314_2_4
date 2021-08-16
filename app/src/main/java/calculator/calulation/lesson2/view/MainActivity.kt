@@ -24,10 +24,8 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.container, MainFragment.newInstance()).commit()
         }
-        registerReceiver(myBroadcastReceiver, IntentFilter("android.intent.action.LOCALE_CHANGED"))
-        registerReceiver(myBroadcastReceiver, IntentFilter("my.action"))
-        //ExtFunctions.main()
-        //mainD()
+        //registerReceiver(myBroadcastReceiver, IntentFilter("android.intent.action.LOCALE_CHANGED"))
+        //registerReceiver(myBroadcastReceiver, IntentFilter("my.action"))
     }
 
     override fun onDestroy() {
