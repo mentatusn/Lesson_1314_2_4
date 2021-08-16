@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import calculator.calulation.lesson2.databinding.FragmentDetailsBinding
+import calculator.calulation.lesson2.model.City
 import calculator.calulation.lesson2.model.Weather
 import calculator.calulation.lesson2.viewmodel.AppState
 import calculator.calulation.lesson2.viewmodel.DetailsViewModel
@@ -80,10 +81,25 @@ class DetailsFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
+    private fun saveCity(
+        city: City,
+        weather: Weather
+    ) {
+        viewModel.saveWeatherToDB(
+            Weather(
+                city,
+                weather.temperature,
+                weather.feelsLike,
+                weather.condition
+            )
+        )
+    }
 
     private fun setData(weather: Weather) {
         binding.mainView.visibility = View.VISIBLE
         binding.loadingLayout.visibility = View.GONE
+
+        saveCity(weatherBundle.city,weather)
 
         weatherBundle?.let { weatherBundle: Weather ->
             binding.cityCoordinates.text = "${weatherBundle.city.lat} ${weatherBundle.city.lon}"

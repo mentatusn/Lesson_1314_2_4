@@ -9,6 +9,7 @@ import calculator.calulation.lesson2.R
 import calculator.calulation.lesson2.databinding.ActivityMainBinding
 import calculator.calulation.lesson2.lesson6.MyBroadcastReceiver
 import calculator.calulation.lesson2.lesson6.ThreadsFragment
+import calculator.calulation.lesson2.view.history.HistoryFragment
 import calculator.calulation.lesson2.view.main.MainFragment
 
 
@@ -43,6 +44,11 @@ class MainActivity : AppCompatActivity() {
             R.id.threads->{
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.container, ThreadsFragment.newInstance()).commit()
+                true
+            }
+            R.id.action_history->{
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.container, HistoryFragment.newInstance()).commit()
                 true
             }
             else ->super.onOptionsItemSelected(item)
