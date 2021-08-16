@@ -7,7 +7,9 @@ import androidx.room.PrimaryKey
 data class HistoryEntity(@PrimaryKey(autoGenerate = true) val id:Int,
                          val name: String,
                          val temperature: Int,
-                         val condition: String)
+                         val condition: String,
+                         val condition2: String=""
+                         )
 @Entity
 data class HistoryEntity2(@PrimaryKey(autoGenerate = true) val id:Int,
                          val name: String,

@@ -1,6 +1,7 @@
 package calculator.calulation.lesson2.view.history
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +14,7 @@ import calculator.calulation.lesson2.model.Weather
 import calculator.calulation.lesson2.viewmodel.AppState
 import calculator.calulation.lesson2.viewmodel.HistoryViewModel
 
-class HistoryFragment : Fragment() {
+class HistoryFragment : Fragment(), OnClickAdapterItem {
 
     private var _binding: FragmentHistoryBinding? = null
     private val binding get() = _binding!!
@@ -30,9 +31,10 @@ class HistoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.historyRecyclerView.adapter = adapter
+
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
         viewModel.getAllHistory()
+
     }
 
 
@@ -43,6 +45,9 @@ class HistoryFragment : Fragment() {
                 binding.historyRecyclerView.visibility = View.VISIBLE
                 //binding.includedLoadingLayout.loadingLayout.visibility = View.GONE
                 binding.loadingLayout.visibility = View.GONE
+                adapter.setListener(this)
+                binding.historyRecyclerView.adapter = adapter
+                val vis = binding.historyRecyclerView.visibility
                 adapter.setData(appState.weatherData)
             }
             is AppState.Loading -> {
@@ -71,5 +76,10 @@ class HistoryFragment : Fragment() {
         @JvmStatic
         fun newInstance() =
             HistoryFragment()
+    }
+
+    override fun onItemClick(name:String, posiotion: Int) {
+        viewModel.deleteByName(name)
+        viewModel.getAllHistory()
     }
 }

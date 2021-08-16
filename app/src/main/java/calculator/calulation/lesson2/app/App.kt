@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import calculator.calulation.lesson2.room.HistoryDao
 import calculator.calulation.lesson2.room.HistoryDataBase
+import calculator.calulation.lesson2.room.MIGRATION_1_2
 
 class App :Application() {
 
@@ -21,7 +22,10 @@ class App :Application() {
                 val builder = Room.databaseBuilder(appInstance!!.applicationContext,
                     HistoryDataBase::class.java,
                     nameDB)
-                db = builder.allowMainThreadQueries().build()
+                db = builder
+                    .allowMainThreadQueries()
+                    .addMigrations(MIGRATION_1_2)
+                    .build()
                 //db = builder.build() // FIXME
             }
             return db!!.historyDao()

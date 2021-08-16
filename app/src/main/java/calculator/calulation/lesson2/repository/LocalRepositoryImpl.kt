@@ -13,6 +13,10 @@ class LocalRepositoryImpl(private val historyDao: HistoryDao) : LocalRepository 
     override fun saveEntity(weather: Weather) {
         historyDao.insert(convertModelToEntity(weather))
     }
+
+    override fun deleteEntityByName(name:String) {
+        historyDao.deleteByWordTestDelete(name)
+    }
 }
 
 

@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.action_history->{
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, HistoryFragment.newInstance()).commit()
+                    .replace(R.id.container, HistoryFragment.newInstance()).addToBackStack("").commit()
                 true
             }
             else ->super.onOptionsItemSelected(item)
