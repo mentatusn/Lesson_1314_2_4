@@ -3,15 +3,10 @@ package calculator.calulation.lesson2.view.history
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import calculator.calulation.lesson2.R
-import calculator.calulation.lesson2.app.App.Companion.getHistoryDao
 import calculator.calulation.lesson2.model.Weather
-import calculator.calulation.lesson2.view.main.MainFragmentAdapter
-import calculator.calulation.lesson2.view.main.OnItemViewClickListener
-import calculator.calulation.utils.convertModelToEntity
 import kotlinx.android.synthetic.main.fragment_history_item.view.*
 
 class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.RecyclerItemViewHolder>() {

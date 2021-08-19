@@ -1,4 +1,4 @@
-package calculator.calulation.utils
+package calculator.calulation.lesson2.utils
 
 import calculator.calulation.lesson2.model.*
 import calculator.calulation.lesson2.room.HistoryEntity

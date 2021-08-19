@@ -13,9 +13,6 @@ import calculator.calulation.lesson2.model.City
 import calculator.calulation.lesson2.model.Weather
 import calculator.calulation.lesson2.viewmodel.AppState
 import calculator.calulation.lesson2.viewmodel.DetailsViewModel
-import calculator.calulation.utils.CircleTransformation
-import coil.api.load
-import com.bumptech.glide.Glide
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
 import com.squareup.picasso.Picasso
 

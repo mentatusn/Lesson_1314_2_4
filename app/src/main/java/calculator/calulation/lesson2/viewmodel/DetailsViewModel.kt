@@ -6,11 +6,9 @@ import calculator.calulation.lesson2.app.App
 import calculator.calulation.lesson2.model.Weather
 import calculator.calulation.lesson2.model.WeatherDTO
 import calculator.calulation.lesson2.repository.DetailsRepositoryImpl
-import calculator.calulation.lesson2.repository.LocalRepository
 import calculator.calulation.lesson2.repository.LocalRepositoryImpl
 import calculator.calulation.lesson2.repository.RemoteDataSource
-import calculator.calulation.lesson2.room.HistoryDao
-import calculator.calulation.utils.convertWeatherDtoToModel
+import calculator.calulation.lesson2.utils.convertWeatherDtoToModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -1,4 +1,4 @@
-package calculator.calulation.utils
+package calculator.calulation.lesson2.utils
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
