@@ -8,8 +8,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/historyRecyclerView"
         android:layout_width="match_parent"
-        android:background="@color/purple_500"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <FrameLayout

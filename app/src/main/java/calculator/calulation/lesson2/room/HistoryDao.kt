@@ -1,5 +1,6 @@
 package calculator.calulation.lesson2.room
 
+import android.database.Cursor
 import androidx.room.*
 import androidx.room.OnConflictStrategy.IGNORE
 
@@ -29,4 +30,20 @@ interface HistoryDao {
 
     @Delete
     fun delete(historyEntity:HistoryEntity)
+
+    /**Start
+     * LESSON 9 ContentProvider*/
+    @Query("DELETE FROM HistoryEntity WHERE id = :id")
+    fun deleteById(id: Long)
+
+    @Query("SELECT id, name, temperature FROM HistoryEntity")
+    fun getHistoryCursor(): Cursor
+
+    @Query("SELECT id, name, temperature FROM HistoryEntity WHERE id = :id")
+    fun getHistoryCursor(id: Long): Cursor
+
+    /**End
+     * LESSON 9 ContentProvider*/
+
+
 }

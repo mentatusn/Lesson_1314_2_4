@@ -10,4 +10,7 @@
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="threads">Threads</string>
+    <string name="history">history</string>
+    <string name="content_provider">Content provider</string>
+    <string name="authorities">calculator.calulation.lesson2.provider</string>
 </resources>

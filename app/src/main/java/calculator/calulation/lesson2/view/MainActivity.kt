@@ -9,6 +9,7 @@ import calculator.calulation.lesson2.R
 import calculator.calulation.lesson2.databinding.ActivityMainBinding
 import calculator.calulation.lesson2.lesson6.MyBroadcastReceiver
 import calculator.calulation.lesson2.lesson6.ThreadsFragment
+import calculator.calulation.lesson2.lesson9.ContentProviderFragment
 import calculator.calulation.lesson2.view.history.HistoryFragment
 import calculator.calulation.lesson2.view.main.MainFragment
 
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         //registerReceiver(myBroadcastReceiver, IntentFilter("android.intent.action.LOCALE_CHANGED"))
         //registerReceiver(myBroadcastReceiver, IntentFilter("my.action"))
     }
+
 
     override fun onDestroy() {
         super.onDestroy()
@@ -49,6 +51,12 @@ class MainActivity : AppCompatActivity() {
             R.id.action_history->{
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.container, HistoryFragment.newInstance()).addToBackStack("").commit()
+                true
+            }
+
+            R.id.action_content_provider->{
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.container, ContentProviderFragment.newInstance()).addToBackStack("").commit()
                 true
             }
             else ->super.onOptionsItemSelected(item)

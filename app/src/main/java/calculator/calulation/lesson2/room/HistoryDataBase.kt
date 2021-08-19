@@ -5,8 +5,7 @@ import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
-@Database(entities = arrayOf(HistoryEntity::class
-    ,HistoryEntity2::class),version = 2)
+@Database(entities = arrayOf(HistoryEntity::class),version = 2)
 abstract class HistoryDataBase: RoomDatabase() {
     abstract fun historyDao():HistoryDao
 }
