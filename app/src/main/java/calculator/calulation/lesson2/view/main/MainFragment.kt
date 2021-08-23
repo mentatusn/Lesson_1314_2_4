@@ -8,6 +8,7 @@ import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
+import android.os.Handler
 import android.os.Message
 import android.util.Log
 import android.view.LayoutInflater
@@ -173,10 +174,22 @@ class MainFragment : Fragment() {
         }
     }
 
-    private fun getAddress(context: Context,location: Location){
+    /*private fun getAddress(context: Context,location: Location){ // TODO Async
         val geoCoder = Geocoder(context)
         val address = geoCoder.getFromLocation(location.latitude,location.longitude,1)
         showAddressDialog(address[0].getAddressLine(0),location)
+    }  */
+
+    private fun getAddress(context: Context,location: Location){ 
+        val handler = Handler(requireActivity().mainLooper)
+
+
+        Thread{
+            val geoCoder = Geocoder(context)
+            val address = geoCoder.getFromLocation(location.latitude,location.longitude,1)
+            handler.post { showAddressDialog(address[0].getAddressLine(0),location) }
+        }.start()
+
     }
 
     private val REFRESH_PERIOD = 6000L

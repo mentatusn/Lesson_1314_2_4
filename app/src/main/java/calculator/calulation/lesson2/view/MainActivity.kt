@@ -7,6 +7,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import calculator.calulation.lesson2.R
 import calculator.calulation.lesson2.databinding.ActivityMainBinding
+import calculator.calulation.lesson2.lesson10.MapsFragment
 import calculator.calulation.lesson2.lesson6.MyBroadcastReceiver
 import calculator.calulation.lesson2.lesson6.ThreadsFragment
 import calculator.calulation.lesson2.lesson9.ContentProviderFragment
@@ -58,6 +59,12 @@ class MainActivity : AppCompatActivity() {
             R.id.action_content_provider->{
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.container, ContentProviderFragment.newInstance()).addToBackStack("").commit()
+                true
+            }
+
+            R.id.action_menu_google_maps->{
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.container, MapsFragment.newInstance()).addToBackStack("").commit()
                 true
             }
             else ->super.onOptionsItemSelected(item)

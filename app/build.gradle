@@ -48,7 +48,8 @@ android {
 
 dependencies {
 
-    implementation 'androidx.room:room-runtime:2.2.5' //FIXME
+    implementation 'androidx.room:room-runtime:2.2.5'
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'//FIXME
     kapt 'androidx.room:room-compiler:2.2.5'
 
 
