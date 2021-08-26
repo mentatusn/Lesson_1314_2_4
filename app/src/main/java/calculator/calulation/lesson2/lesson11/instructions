@@ -1,0 +1,19 @@
+
+1(правильный) способ
+POST запрос https://fcm.googleapis.com/fcm/send
+
+HEaders
+Authorization  key=<ваш ключ>
+
+Body-> raw-> JSON
+
+{
+"registration_ids":["client_1_id","client_2_id"],
+"data":{"title":"","message":""}
+}
+
+2(шуточный) способ
+через сервер
+http://45.87.1.212/gb/fcm_send.php?sudent_client_id=<Ваш client_id>&sudent_server_key=<Ваш server_key>&sudent_mesage=<Ваш message>
+
+не забываем экранировать пробелы в message, либо вовсе их(пробелы) избегаем, если не понятно о чем речь

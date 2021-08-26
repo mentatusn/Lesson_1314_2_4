@@ -2,14 +2,16 @@ package calculator.calulation.lesson2.view
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import androidx.core.app.NotificationCompat
 import android.content.Context
 import android.content.IntentFilter
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
+
 import calculator.calulation.lesson2.R
 import calculator.calulation.lesson2.databinding.ActivityMainBinding
 import calculator.calulation.lesson2.lesson10.MapsFragment
@@ -18,6 +20,9 @@ import calculator.calulation.lesson2.lesson6.ThreadsFragment
 import calculator.calulation.lesson2.lesson9.ContentProviderFragment
 import calculator.calulation.lesson2.view.history.HistoryFragment
 import calculator.calulation.lesson2.view.main.MainFragment
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.iid.InstanceIdResult
 
 
 class MainActivity : AppCompatActivity() {
@@ -40,6 +45,22 @@ class MainActivity : AppCompatActivity() {
         //registerReceiver(myBroadcastReceiver, IntentFilter("android.intent.action.LOCALE_CHANGED"))
         //registerReceiver(myBroadcastReceiver, IntentFilter("my.action"))
         //push()
+
+
+        /** Получаем ID клиента */
+        FirebaseInstanceId.getInstance().getInstanceId()
+            .addOnCompleteListener(OnCompleteListener<InstanceIdResult> { task ->
+                if (!task.isSuccessful) {
+                    Log.d("mylogs", task.exception.toString() + "")
+                    return@OnCompleteListener
+                }
+
+                // Get new Instance ID token
+                val token: String = task.result!!.getToken()
+                // Log and toast
+                Log.d("mylogs", token)
+            })
+
     }
 
     private fun push() {
