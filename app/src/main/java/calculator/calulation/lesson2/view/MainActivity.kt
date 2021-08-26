@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         }
         //registerReceiver(myBroadcastReceiver, IntentFilter("android.intent.action.LOCALE_CHANGED"))
         //registerReceiver(myBroadcastReceiver, IntentFilter("my.action"))
-        push()
+        //push()
     }
 
     private fun push() {
